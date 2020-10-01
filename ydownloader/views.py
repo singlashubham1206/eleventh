@@ -26,6 +26,7 @@ def download(request):
         return res
 
 def downloading(request):
+	save = "/sdcard/YoutubeDownloads"
 	if request.method == 'POST':
 		formatRadio = request.POST['formatRadio']
 		if formatRadio != "audio":
@@ -41,5 +42,5 @@ def downloading(request):
 		else:
 			yt.streams.filter(type = formatRadio,resolution=qualityRadio).first().download()
 		print("Downloding completed")
-	res = render(request,'ydownloader/home.html',{"msg":"downloading completed"})
+	res = render(request,'ydownloader/home.html',{"msg":"downloading completed at /sdcard/YoutubeDownloads "})
 	return res
